@@ -39,13 +39,10 @@
 
             <label class="form-label">
                 Телефон
-                <input
+                <vPhoneCountryVue
                     v-model="store.form.phone"
-                    class="form__input"
-                    type="text"
-                    name="phone"
-                    required
-                >
+                />
+
                 <span v-for="error in v$.phone.$errors" :key="error.$uid"
                     class="form-field__error"
                 >
@@ -85,7 +82,8 @@
             <button
                 class="btn btn-primary"
                 type="button"
-                @click="sendForm"
+                v-debounce:500="sendForm"
+                :debounce-events="'click'"
             >Отправить</button>
         </form>
     </div>
@@ -97,6 +95,7 @@
     import { useRequest } from '@/store/action'
     import { useVuelidate } from '@vuelidate/core'
     import { required, maxLength, email } from '@vuelidate/validators'
+    import vPhoneCountryVue from "./v-phone-country.vue";
 
     const store = useRequest();
 
@@ -133,6 +132,7 @@
             console.error(error);
         }
     }
+ 
 
     document.addEventListener('click', e => {
         let popup = document.querySelector('.js-popup');
@@ -182,6 +182,7 @@
             border: 1px solid #cecece;
             border-radius: 4px;
             padding: 5px;
+            width: 100%;
             &:focus {
                 outline: 1px solid #cecece;
             }
