@@ -19,7 +19,7 @@ export const useRequest = defineStore('request', {
 interface form {
   name: string | null,
   lastname: string | null,
-  phone: string | null,
+  phone: any,
   email: string | null,
   message: string
 }
