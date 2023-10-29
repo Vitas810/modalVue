@@ -67,7 +67,7 @@
                     onlyCountries: this.countries,
                     separateDialCode: true,
                     hiddenInput: 'full_phone',
-                    utilsScript: '/utils/utils.js',
+                    utilsScript: '/modal_vue/utils/utils.js',
                     autoPlaceholder: 'off'
                 });
 
