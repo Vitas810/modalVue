@@ -52,17 +52,12 @@
         watch: {
             value(val) {
                 this.modelValue = val;
-                console.log(val);
             }
         },
         mounted() {
             this.init();
         },
         methods: {
-            test(event) {
-                this.$emit('update:input', event.target.value)
-                console.log(event.target.value);
-            },
             init() {
                 const input = this.$refs["phone-country"];
                 if (!input) return;
@@ -72,7 +67,7 @@
                     onlyCountries: this.countries,
                     separateDialCode: true,
                     hiddenInput: 'full_phone',
-                    utilsScript: '/src/utils/utils.js',
+                    utilsScript: '/utils/utils.js',
                     autoPlaceholder: 'off'
                 });
 
